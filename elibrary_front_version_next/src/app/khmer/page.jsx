@@ -1,10 +1,12 @@
 import React from 'react'
 import KhmerBook from './KhmerBook'
+import { fetchbook } from './FetchBook'
 
-function page() {
+async function page() {
+  const data = await fetchbook();
   return (
     <div>
-        <KhmerBook/>
+        <KhmerBook datas={data}/>
     </div>
   )
 }

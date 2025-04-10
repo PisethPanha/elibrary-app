@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react'
 import BookList from '../react/components/BookList';
 import axios from 'axios';
 
-function KhmerBook() {
-    const [image, setImage] = useState([]);
+function KhmerBook({datas}) {
+    const [image, setImage] = useState(datas || []);
     const [dropdown, setDropdown] = useState(false);
     const [backBTN, setBackBTN] = useState(false);
     const [loading, setLoading] = useState(false)
@@ -52,11 +52,7 @@ function KhmerBook() {
 
 
     }
-    useEffect(() => {
-        setLoading(true)
-        axios.get("https://carefree-empathy-production.up.railway.app/getbookastype", { params: { leng: "Khmer" } }).then((res) => { setImage(res.data.reverse()); setLoading(false) }
-        )
-    }, [])
+    
     return (
         <div>
             <div className=''>
