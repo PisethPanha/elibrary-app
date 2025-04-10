@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./elibrary_server
+      dockerfile: ../Dockerfile.server
+    container_name: backend
+    restart: always
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: ./elibrary_front_version_next
+      dockerfile: ../Dockerfile.client
+    container_name: frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
